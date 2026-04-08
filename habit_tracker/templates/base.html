@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>{% block title %}Simple Habbit Tracker{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='vendor/tailadmin/favicon.ico', v='20260409c') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='vendor/tailadmin/style.css', v='20260409c') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='habit.css', v='20260409c') }}" />
+  </head>
+  <body class="orbit-body" style="background: #111827;">
+    <div class="orbit-app-shell" style="padding-top: 12px;">
+      <main class="orbit-main" style="padding-top: 0;">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="flash-stack" style="position: fixed; bottom: 24px; right: 24px; z-index: 99999; display: flex; flex-direction: column; gap: 8px;">
+              {% for category, message in messages %}
+                <div class="flash-message is-{{ category }}" style="margin: 0; box-shadow: 0 10px 30px rgba(0,0,0,0.4); animation: slideIn 0.3s ease-out;">{{ message }}</div>
+              {% endfor %}
+            </div>
+            <script>
+               setTimeout(() => {
+                   const alerts = document.querySelector('.flash-stack');
+                   if (alerts) alerts.style.display = 'none';
+               }, 3000);
+            </script>
+          {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+      </main>
+
+      <input id="search-input" type="text" hidden aria-hidden="true" tabindex="-1" />
+      <button id="search-button" type="button" hidden aria-hidden="true" tabindex="-1"></button>
+      <span id="year" hidden>{{ selected_date.year }}</span>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js', v='20260409c') }}"></script>
+  </body>
+</html>
