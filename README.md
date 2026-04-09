@@ -2,6 +2,10 @@
 
 I made this so I can track my stuff. Feel free to use it!
 
+![Screenshot 1](screenshots/sc1.png)
+![Screenshot 2](screenshots/sc2.png)
+![Screenshot 3](screenshots/sc3.png)
+
 ## Linux Deployment Output (Port 80 Background Service)
 
 Here is how to clone this exact repository to a headless Linux box (Raspberry Pi, Ubuntu Home Server, etc) and run it permanently on port 80 without hanging open any console windows. 
